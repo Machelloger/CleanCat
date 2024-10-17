@@ -1,0 +1,228 @@
+.App {
+  text-align: center;
+  align-items: center;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+@font-face {
+  font-family: 'Manrope-ExtraLight';
+  src: local("Manrope-ExtraLight"),
+  url("../fonts/Manrope-ExtraLight.ttf") format("truetype");
+}
+
+body {
+  font-family: 'Manrope-ExtraLight';
+  color: rgba(79, 112, 209, 1);
+  font-weight:lighter;
+  font-size: 1.5em;
+}
+
+/* .Background {
+  background: url('../assets/blobs.svg');
+} */
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  flex-direction: row;
+  margin-top: 43px;
+  margin-bottom: 60px;
+}
+
+.anchors {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+.anchors>div {
+  margin: 0 1.5vw 0 1.5vw;
+}
+
+.phoneNumber {
+  user-select: text;
+  cursor: text;
+}
+
+.switchButtons {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+}
+
+.switchButtons>button {
+  width: 20%;
+  height: 60px;
+  margin: 40px 20px 40px 20px;
+  border-radius: 20px;
+  border: 0;
+  font-weight: lighter;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.switchButtons>button:hover {
+  filter: brightness(85%);
+}
+
+.footer {
+  background-color: rgba(79, 112, 209, 1);
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer>p {
+  margin: 12px 0 12px 0;
+}
+
+.footer>h1 {
+  font-weight: lighter;
+  padding-top: 20px;
+  margin: 0;
+}
+
+.footer>a {
+  text-decoration: none;
+  color: white;
+  /* margin: 0 0 24px 0; */
+}
+
+.btnForm {
+  background-color: rgba(255, 171, 71, 1);
+  width: 20%;
+  height: 60px;
+  /* margin: 40px 20px 40px 20px; */
+  border-radius: 20px;
+  border: 0;
+  font-weight: lighter;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: ease .5s;
+  margin: 12px 0 12px 0;
+}
+
+.p-dialog-header {
+  font-family: 'Manrope-ExtraLight';
+  color: rgba(79, 112, 209, 1);
+  font-weight: lighter;
+  font-size: 2em;
+}
+
+.btnForm:hover {
+  filter: brightness(85%);
+}
+
+.DialogForm>.p-dialog-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.p-float-label {
+  width: 90%;
+  margin: 10px 0 10px 0;
+}
+
+.p-float-label>input {
+  width: 100%;
+}
+
+.confirmButton {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.confirmButton>input {
+  font-family: 'Manrope-ExtraLight';
+  color: rgba(79, 112, 209, 1);
+  font-weight: lighter;
+  background-color: rgba(79, 112, 209, 1);
+  width: 20%;
+  height: 60px;
+  /* margin: 40px 20px 40px 20px; */
+  border-radius: 20px;
+  border: 0;
+  font-weight: lighter;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.confirmButton>input:hover {
+  filter: brightness(85%);
+}
+
+.littleText {
+  font-size: .6em;
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+
+    margin: 30px 0 30px 0;
+  }
+
+  .header>div {
+    display: none !important;
+  }
+
+  .header>img {
+    width: 50vw;
+  }
+
+  .switchButtons>button {
+    width: 40vw;
+    font-size: .8em;
+    margin: 0 15px 0 15px;
+  }
+
+  .btnForm {
+    width: 40vw;
+    font-size: .8em;
+    margin: 10px;
+  }
+
+  .footer>h1 {
+    padding: 0;
+    width: 90vw;
+    font-size: 1.3em;
+    margin: 10px;
+  }
+
+  .footer>p {
+    font-size: .8em;
+    margin: 0;
+    width: 90vw;
+  }
+
+  .footer>a {
+    margin: 10px;
+    font-size: .8em;
+    width: 90vw;
+  }
+
+
+  .DialogForm {
+    width: 90vw !important;
+  }
+
+  .littleText {
+    font-size: .2em !important;
+    margin: 0 !important;
+  }
+}

@@ -1,0 +1,32 @@
+  .bubbles{
+    position:fixed;
+    width:100vw;
+    height: 100vh;
+    z-index:-1;
+    overflow:hidden;
+    top:0;
+    left:0;
+  }
+  .bubble{
+    position: absolute;
+    bottom:-100px;
+    // background: #b3eafc;
+    border-radius:50%;
+    background: radial-gradient(circle at 100%, #a8e5f9, #c5ebf8 50%, #d6f0f9 75%, #ddf1f9 75%);
+    opacity:0.8;
+    animation: rise 10s infinite ease-in;
+  }
+
+  @keyframes rise{
+    0%{
+      bottom: -100px;
+      transform:translateX(0);
+    }
+    50%{
+      transform:translate(100px);
+    }
+    100%{
+      bottom:1080px;
+      transform:translateX(-200px);
+    }
+  }
