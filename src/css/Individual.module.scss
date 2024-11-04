@@ -9,15 +9,19 @@
 
 .block1 {
     width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
 } 
 
 .block1>h1 {
     font-weight: lighter;
-    text-align: start;
+    text-align: center;
 }
 
 .block1>p {
-    text-align: start;
+    text-align: center;
 }
 
 .block1>div {
@@ -79,7 +83,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 100px;
+    gap: 70px;
 }
 
 .block5 {
@@ -98,12 +102,37 @@
     background: none;
 }
 
+.floattext {
+    background-color: rgba(179, 234, 252, 0.2);
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+.floattextBlock {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 600px) {
     .content {
         font-size: .8em;
     }
     .block1 {
         width: 90vw;
+    }
+
+    .block1>h1 {
+        text-align: center;
+    }
+
+    .block1>p {
+        text-align: center;
+    }
+
+    .floattext {
+        padding: 10px;
+        width: 150px;
     }
 
     .block2 {

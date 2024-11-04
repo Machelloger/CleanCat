@@ -9,10 +9,10 @@ function Step({number, header, text}) {
     }
     return(
         <div style={styles.container}>
-            <h2 style={{marginRight: '20px'}}>{number}</h2>
+            <h2 style={{margin: '15px 20px 0 0'}}>{number}</h2>
             <div>
-                <p style={{textAlign: 'left'}}>{header}</p>
-                <p style={{fontSize: '0.7em', textAlign: 'left'}}>{text}</p>
+                <div style={{textAlign: 'left', marginBottom: '0'}}>{header}</div>
+                <div style={{fontSize: '0.7em', textAlign: 'left'}}>{text}</div>
             </div>
         </div>
     );

@@ -13,11 +13,11 @@
 
 .block1>h1 {
     font-weight: lighter;
-    text-align: start;
+    text-align: center;
 }
 
 .block1>p {
-    text-align: start;
+    text-align: center;
 }
 
 .block1>div {
@@ -92,6 +92,14 @@
     }
     .block1 {
         width: 90vw;
+    }
+
+    .block1>h1 {
+        text-align: center;
+    }
+
+    .block1>p {
+        text-align: center;
     }
 
     .block2 {

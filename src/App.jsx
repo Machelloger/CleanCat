@@ -13,6 +13,7 @@ import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { sendMessage } from './api/telegram.ts';
 import { Button } from 'primereact/button';
+import { isMobile } from 'react-device-detect';
 
 function App() {
   const [swap, setSwap] = useState(false);
@@ -25,6 +26,24 @@ function App() {
   const toast = useRef(null)
 
   const [loading, setLoading] = useState(false);
+
+  const url=window.location.search;
+
+  const getUTMParams = () => {
+    var data = {};
+    if (url !== '') {
+      let utmData = url.split('?')[1].split('&');
+      for (let i = 0; i < utmData.length; i++) {
+        let [key, value] = utmData[i].split('=');
+        data[key] = value;
+      }
+      return data;
+    } else {
+      return {
+        'No additional information': 'not ad search'
+      }
+    }
+  }
 
   const accept = () => {
     toast.current.show({ severity: 'info', summary: 'Готово', detail: 'Ваш запрос принят', life: 3000 });
@@ -61,10 +80,18 @@ function App() {
     return text
   }
 
+  const showform = () => {
+    setVisible(true);
+  }
+
   const handleSubmit = async () => {
     try {
-      let message = `*Имя:* ${escapeMarkdown(name)}%0A*Номер:* ${escapeMarkdown(phoneNum)}%0A*Адрес:* ${escapeMarkdown(address)}%0A*Вид чистки:* ${escapeMarkdown(cleanType)}%0A*Материал*:${escapeMarkdown(material)}%0A`
       setLoading(true);
+      let UTMData = getUTMParams();
+      let message = `*Имя:* ${escapeMarkdown(name)}%0A*Номер:* ${escapeMarkdown(phoneNum)}%0A*Адрес:* ${escapeMarkdown(address)}%0A*Вид чистки:* ${escapeMarkdown(cleanType)}%0A*Материал*:${escapeMarkdown(material)}%0A${escapeMarkdown('---------')}%0A*Additional Information:*%0A${escapeMarkdown('---------')}%0A`;
+      for (var item in UTMData) {
+        message += `*${escapeMarkdown(item)}:* __${escapeMarkdown(UTMData[item])}__%0A`;
+      }
       await sendMessage(message);
       accept();
       setLoading(false);
@@ -72,6 +99,13 @@ function App() {
       reject(e);
     }
   };
+
+  const handleScroll = (itemName) => {
+    let element = document.getElementById(itemName);
+    if (element) {
+      element.scrollIntoView({behavior: 'smooth'});
+    }
+  }
 
   return (
     <PrimeReactProvider style={{width: '100vw'}}>
@@ -82,22 +116,22 @@ function App() {
             <img width='20%' src={logo} alt='logo' />
             <div className='anchors'>
               <div style={{cursor: 'pointer'}}>
-                <a style={{all: 'unset'}} href='#price'>
+                <button onClick={() => handleScroll('price')} style={{all: 'unset'}}>
                 Цены
-                </a>
+                </button>
               </div>
               <div style={{cursor: 'pointer'}}>
-                <a style={{all: 'unset'}} href='#questions'>
+                <button onClick={() => handleScroll('questions')} style={{all: 'unset'}}>
                 Вопросы
-                </a>
+                </button>
               </div>
               <div style={{cursor: 'pointer'}}>
-                <a style={{all: 'unset'}} href='#contacts'>
+                <button onClick={() => handleScroll('contacts')} style={{all: 'unset'}}>
                 Контакты
-                </a>
+                </button>
               </div>
               <div className='phoneNumber'>
-                +7 (495) 208-58-75
+                +7(926)457-04-24
               </div>
             </div>
           </div>
@@ -114,13 +148,13 @@ function App() {
             </button>
           </div>
           <div>
-            {swap ? <Organisations /> : <Individual />}
+            {swap ? <Organisations /> : <Individual formVisChanger={() => showform} />}
           </div>
           <div id='contacts' className='footer'>
             <h1>Связаться с нами</h1>
             <p>Вы можете оставить заявку и мы перезвоним Вам в ближайшее время</p>
-            <a href='tel: +7(495)208-58-75'>+ 7 (495) 208-58-75</a>
-            <button className='btnForm' onClick={() => setVisible(true)}>
+            {isMobile ? <a href='tel: +7(926)457-04-24'>+7(926)457-04-24</a> : <p>+7(926)457-04-24</p>}
+            <button className='btnForm' onClick={showform}>
               Оставить заявку
             </button>
             <form onSubmit={handleSubmit}>
